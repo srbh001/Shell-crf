@@ -38,6 +38,31 @@ def execute_type(args):
         print(f"{command}: not found")
 
 
+def execute_pwd():
+    """Handles the pwd command by printing the present working directory."""
+    cwd = os.getcwd()
+    print(cwd)
+    return
+
+
+def execute_cd(args):
+    """Handles the cd command to change the working directory."""
+    if not args:
+        home = os.environ["HOME"]
+        target_dir = os.path.expanduser(home)
+    else:
+        target_dir = args[0]
+
+    try:
+        os.chdir(target_dir)
+    except FileNotFoundError:
+        print(f"cd: no such file or directory: {target_dir}")
+    except NotADirectoryError:
+        print(f"cd: not a directory: {target_dir}")
+    except PermissionError:
+        print(f"cd: permission denied: {target_dir}")
+
+
 def is_external_command(command):
     paths = os.environ["PATH"].split(":")
     for directory in paths:
@@ -47,6 +72,7 @@ def is_external_command(command):
 
 
 def main():
+
     while True:
         try:
             sys.stdout.write("$ ")
@@ -64,6 +90,9 @@ def main():
                 execute_echo(args)
             elif command == "type":
                 execute_type(args)
+
+            elif command == "pwd":
+                execute_pwd()
 
             elif is_external_command(command):
                 args = " ".join(args)
