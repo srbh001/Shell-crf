@@ -1,6 +1,6 @@
 import os
 import sys
-
+import subprocess
 
 COMMANDS_TYPE = {"exit": "shell", "echo": "shell", "type": "shell"}
 
@@ -38,6 +38,14 @@ def execute_type(args):
         print(f"{command}: not found")
 
 
+def is_external_command(command):
+    paths = os.environ["PATH"].split(":")
+    for directory in paths:
+        if os.path.exists(f"{directory}/{command}"):
+            return True
+    return False
+
+
 def main():
     while True:
         try:
@@ -56,6 +64,11 @@ def main():
                 execute_echo(args)
             elif command == "type":
                 execute_type(args)
+
+            elif is_external_command(command):
+                args = " ".join(args)
+                subprocess.run([command, args])
+
             else:
                 print(f"{command}: command not found")
 
