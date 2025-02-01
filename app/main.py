@@ -7,6 +7,7 @@ def main():
     while True:
         command = input()
         print(f"{command}: command not found")
+        sys.stdout.write("$ ")
 
 
 if __name__ == "__main__":
