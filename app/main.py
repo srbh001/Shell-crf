@@ -1,6 +1,9 @@
 import sys
 
 
+commands_type = {"exit": "shell", "echo": "shell"}
+
+
 def main():
     sys.stdout.write("$ ")
 
@@ -18,6 +21,13 @@ def main():
         elif command == "echo":
             msg = " ".join(inp[1:])
             sys.stdout.write(f"{msg}\n")
+
+        elif command == "type":
+            command2 = inp[1]
+            if command2 in commands_type:
+                print(f"{command2} is a {commands_type[command2]} builtin")
+            else:
+                print(f"{command2}: command not found")
 
         else:
             print(f"{command}: command not found")
