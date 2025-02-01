@@ -100,7 +100,7 @@ def main():
             elif command == "pwd":
                 execute_pwd()
 
-            elif command = "cd":
+            elif command == "cd":
                 execute_cd(args)
 
             elif is_external_command(command):
