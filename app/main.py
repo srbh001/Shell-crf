@@ -2,7 +2,13 @@ import os
 import sys
 import subprocess
 
-COMMANDS_TYPE = {"exit": "shell", "echo": "shell", "type": "shell"}
+COMMANDS_TYPE = {
+    "exit": "shell",
+    "echo": "shell",
+    "type": "shell",
+    "pwd": "shell",
+    "cd": "shell",
+}
 
 
 def execute_exit(args):
