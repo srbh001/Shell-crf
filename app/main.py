@@ -58,6 +58,8 @@ def execute_cd(args):
         target_dir = os.path.expanduser(home)
     else:
         target_dir = args[0]
+        if target_dir == "~":
+            target_dir = os.environ["HOME"]
 
     try:
         os.chdir(target_dir)
