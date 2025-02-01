@@ -27,7 +27,7 @@ def main():
             if command2 in commands_type:
                 print(f"{command2} is a {commands_type[command2]} builtin")
             else:
-                print(f"{command2}: command not found")
+                print(f"{command2}: not found")
 
         else:
             print(f"{command}: command not found")
