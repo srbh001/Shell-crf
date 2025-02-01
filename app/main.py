@@ -1,7 +1,7 @@
 import sys
 
 
-commands_type = {"exit": "shell", "echo": "shell"}
+commands_type = {"exit": "shell", "echo": "shell", "type": "shell"}
 
 
 def main():
