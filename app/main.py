@@ -109,7 +109,7 @@ def main():
 
             elif is_external_command(command):
 
-                subprocess.run([command, args])
+                subprocess.run([inp])
 
             else:
                 print(f"{command}: command not found")
