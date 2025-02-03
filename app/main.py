@@ -108,7 +108,7 @@ def main():
                 execute_cd(args)
 
             elif is_external_command(command):
-                args = " ".join(args)
+
                 subprocess.run([command, args])
 
             else:
