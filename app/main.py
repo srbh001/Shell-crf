@@ -2,6 +2,9 @@ import os
 import sys
 import subprocess
 
+
+import shlex
+
 COMMANDS_TYPE = {
     "exit": "shell",
     "echo": "shell",
@@ -85,8 +88,7 @@ def main():
         try:
             sys.stdout.write("$ ")
             sys.stdout.flush()
-            inp = input().strip().split()
-
+            inp = shlex.split(input())
             if not inp:
                 continue
 
